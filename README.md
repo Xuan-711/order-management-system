@@ -3,7 +3,6 @@
 # 项目名称
 
 > 面向中小电商场景的订单管理系统，支持下单、库存扣减、超时自动关单全流程。
-📷 项目截图
 
 ## 📷 项目截图
 <img width="1280" height="800" alt="屏幕截图 2026-08-11 144625" src="https://github.com/user-attachments/assets/bd40b3ab-7605-4566-9750-53274f408252" />
@@ -19,9 +18,8 @@
 - 数据库：MySQL + Redis
 
 ## 🚀 快速开始
-git clone https://github.com/你的用户名/项目名.git
-cd 项目名
-（写清楚后续命令，保证别人能跑起来）
+git clone https://github.com/RuiXuan Wu/轩-711.git
+cd 轩-711
 
 ## 📌 后续计划
 - [ ] 待办事项 1
