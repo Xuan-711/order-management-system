@@ -18,7 +18,7 @@
 - 数据库：MySQL + Redis
 
 ## 🚀 快速开始
-git clone https://github.com/RuiXuan Wu/轩-711.git
+git clone https://github.com/RuiXuanWu/轩-711.git
 cd 轩-711
 
 ## 📌 后续计划
