@@ -18,8 +18,8 @@
 - 数据库：MySQL + Redis
 
 ## 🚀 快速开始
-git clone https://github.com/RuiXuanWu/轩-711.git
-cd 轩-711
+git clone https://github.com/Xuan-711/order-management-system.git
+cd order-management-system
 
 ## 📌 后续计划
 - [ ] 待办事项 1
