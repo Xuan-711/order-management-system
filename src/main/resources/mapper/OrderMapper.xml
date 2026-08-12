@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuan.order.mapper.OrderMapper">
+
+    <insert id="insert" parameterType="com.xuan.order.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order (order_no, product_id, quantity, amount, status, create_time)
+        VALUES (#{orderNo}, #{productId}, #{quantity}, #{amount}, #{status}, #{createTime})
+    </insert>
+
+    <select id="selectByOrderNo" resultType="com.xuan.order.entity.Order">
+        SELECT id, order_no, product_id, quantity, amount, status,
+               create_time, pay_time, ship_time, close_time
+        FROM t_order
+        WHERE order_no = #{orderNo}
+    </select>
+
+    <select id="selectAll" resultType="com.xuan.order.entity.Order">
+        SELECT id, order_no, product_id, quantity, amount, status,
+               create_time, pay_time, ship_time, close_time
+        FROM t_order
+        ORDER BY id DESC
+    </select>
+
+    <!-- 状态机: 仅当当前状态匹配 fromStatus 才更新为 toStatus，保证流转合法 -->
+    <update id="updateStatus">
+        UPDATE t_order
+        <set>
+            status = #{toStatus},
+            <if test="toStatus == 1">pay_time = NOW(),</if>
+            <if test="toStatus == 2">ship_time = NOW(),</if>
+            <if test="toStatus == 3">close_time = NOW(),</if>
+        </set>
+        WHERE order_no = #{orderNo} AND status = #{fromStatus}
+    </update>
+
+</mapper>
