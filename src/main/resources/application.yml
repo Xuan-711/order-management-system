@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    # 默认使用 H2 内存数据库，零安装即可启动
+    # 切换 MySQL：把下面注释打开，注释掉 H2 配置
+    # url: jdbc:mysql://localhost:3306/order_db?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf8
+    # username: root
+    # password: 123456
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:order_db;DB_CLOSE_DELAY=-1;MODE=MySQL
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+
+  redis:
+    # Redis 未连接时自动降级到数据库行锁扣库存
+    host: localhost
+    port: 6379
+    timeout: 2000ms
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.xuan.order: info
